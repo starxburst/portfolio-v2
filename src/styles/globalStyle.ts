@@ -1,0 +1,36 @@
+import { globalCss } from '.'
+
+export const globalStyles = globalCss({
+  '@import':
+    "url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap')",
+  'html, body': {
+    position: 'relative',
+    zIndex: 0,
+    padding: 0,
+    margin: 0,
+    fontSize: '16px',
+    fontFamily: 'Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif',
+    lineHeight: 1,
+    height: '100%',
+    minHeight: '100vh',
+  },
+  body: {
+    backgroundColor: '$background',
+    color: '$text',
+    // overflow: 'hidden',
+  },
+  div: {
+    position: 'relative',
+  },
+  '#root': {
+    minHeight: '100%',
+    height: '100%',
+    // minWidth: '1200px',
+    padding: 0,
+    margin: 0,
+    // overflow: 'auto',
+  },
+  '*': {
+    boxSizing: 'border-box',
+  },
+})
