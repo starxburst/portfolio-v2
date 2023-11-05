@@ -12,6 +12,7 @@ export const globalStyles = globalCss({
     fontFamily: 'Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif',
     lineHeight: 1,
     height: '100%',
+    minWidth: '100%',
     minHeight: '100vh',
   },
   body: {
@@ -25,9 +26,10 @@ export const globalStyles = globalCss({
   '#root': {
     minHeight: '100%',
     height: '100%',
+    width: '100%',
     // minWidth: '1200px',
     padding: 0,
-    margin: 0,
+    margin: '0 auto',
     // overflow: 'auto',
   },
   '*': {

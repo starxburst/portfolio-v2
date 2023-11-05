@@ -3,21 +3,24 @@ import { useRecoilState } from 'recoil';
 import { darkModeState } from '../stores/darkMode';
 import { styled } from '../styles';
 import Box from './Containers/Box';
+import DarkmodeSwitch from './Switches/DarkModeSwitch';
 
 const HeaderWrapper = styled('div', {
+  width: '100%',
+  zIndex: '$navBar',
   position: 'fixed',
   left: 0,
   right: 0,
-  width: '100%',
   variants: {
     scrolled: {
       true: {
-        backgroundColor: '#333',
+        // backgroundColor: '#333',
+        backdropFilter: 'blur(10px)',
         transform: 'translateY(0px)',
-        transition: 'transform 0.5s, background-color 1s',
+        transition: 'transform 0.5s',
       },
       false: {
-        backgroundColor: 'transparent',
+        // backgroundColor: 'transparent',
         transform: 'translateY(30px)',
         transition: 'all 0.5s',
       },
@@ -46,12 +49,12 @@ const Header = (): JSX.Element => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState)
 
   return (
-    <HeaderWrapper scrolled={scrolled}>
+    // <HeaderWrapper scrolled={scrolled}>
       <Box>
-        <h1>Header</h1>
         <div onClick={() => setDarkMode(!darkMode)}>Darkmode</div>
+        <DarkmodeSwitch />
       </Box>
-    </HeaderWrapper>
+    // </HeaderWrapper>
   );
 };
 

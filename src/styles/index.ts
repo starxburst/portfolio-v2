@@ -82,7 +82,7 @@ export const {
       round: '50%',
     },
     zIndices: {
-      navBar: 1100,
+      navBar: 1000,
       modal: 1300,
       modalContent: 1310,
       selectPopup: 1320,
