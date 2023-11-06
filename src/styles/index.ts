@@ -82,6 +82,8 @@ export const {
       round: '50%',
     },
     zIndices: {
+      emoji: 900,
+      randomEmoji: 910,
       navBar: 1000,
       modal: 1300,
       modalContent: 1310,

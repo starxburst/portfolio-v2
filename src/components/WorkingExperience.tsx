@@ -4,6 +4,7 @@ const WorkingExperience = (): JSX.Element => {
   return (
     <>
       <Box
+        id="working-experience"
         direction="column"
         style={{ width: "100%" }}
         css={{ height: "100vh" }}
@@ -12,11 +13,7 @@ const WorkingExperience = (): JSX.Element => {
         <h1>Working Experience</h1>
         <h1>Working Experience</h1>
         <h1>Working Experience</h1>
-        <h1>Working Experience</h1>
-        <h1>Working Experience</h1>
-        <h1>Working Experience</h1>
-        <h1>Working Experience</h1>
-        <h1>Working Experience</h1>
+   
       </Box>
     </>
   );

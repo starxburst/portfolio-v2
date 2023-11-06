@@ -2,8 +2,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { ReactNode, useLayoutEffect, useState } from 'react';
 import Header from "../components/Header";
 import { styled } from '../styles';
-import { NotMobile } from '../hooks/useResponsive';
-import SnakeGame from '../utils/SnakeGame';
+
 
 type MainLayoutProps = {
   children: ReactNode
@@ -11,7 +10,6 @@ type MainLayoutProps = {
 
 const MainLayout = ({ children }: MainLayoutProps): JSX.Element => {
   const [scrolled, setScrolled] = useState(false);
-
   useLayoutEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 100;
@@ -29,9 +27,6 @@ const MainLayout = ({ children }: MainLayoutProps): JSX.Element => {
 
   return (
     <>
-      <NotMobile>
-        <SnakeGame />
-      </NotMobile>
       <Grid width={"100%"} container direction="column">
         <Grid>
           <HeaderWrapper scrolled={scrolled}>

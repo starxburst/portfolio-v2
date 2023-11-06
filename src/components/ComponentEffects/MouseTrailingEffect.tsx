@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { styled } from "../../styles";
 
 // Custom hook for mouse dragging and position tracking
 function useMouseDrag() {
@@ -74,13 +75,22 @@ export function MouseTrailingEffect({ string }) {
   return [...string].map((char, index) => {
     const ease = index * 0.04;
     return (
-      <div
+      <StyledDiv
       key={index}
-        style={{ position: "absolute", transition: `transform ${ease}s`, left: 0, top: 0, fontSize: '2rem' }}
+        css={{ transition: `transform ${ease}s`}}
         ref={trailRefs.current[index]}
       >
         {char}
-      </div>
+      </StyledDiv>
     );
   });
 }
+
+const StyledDiv = styled("div", {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  fontSize: '2rem',
+  zIndex: '$emoji',
+  pointerEvents: "none",
+});

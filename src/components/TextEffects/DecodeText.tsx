@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { styled } from '../styles';
+import { styled } from '../../styles';
 
 type TextAnimationProps = {
   char: string;
@@ -48,7 +48,6 @@ const TextAnimationContainer = styled('div', {
 
 const DecodeTextContainer = styled('div', {
   // width: '100%',
-  fontSize: '$large',
   textAlign: 'center',
   display: 'flex',
   flexWrap: 'nowrap',
