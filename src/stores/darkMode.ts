@@ -5,6 +5,6 @@ import { localStorageEffect } from './utils'
 
 export const darkModeState = atom<boolean>({
   key: ATOM_KEY.DarkMode,
-  default: false,
+  default: true,
   effects: [localStorageEffect(ATOM_KEY.DarkMode)],
 })
