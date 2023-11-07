@@ -2,6 +2,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { ReactNode, useLayoutEffect, useState } from 'react';
 import Header from "../components/Header";
 import { styled } from '../styles';
+import { client } from '../services/contentful';
+import useScrollDirection from '../hooks/useDetectDirection';
 
 
 type MainLayoutProps = {
@@ -9,6 +11,8 @@ type MainLayoutProps = {
 }
 
 const MainLayout = ({ children }: MainLayoutProps): JSX.Element => {
+  const x = client
+  const scrollDirection = useScrollDirection();
   const [scrolled, setScrolled] = useState(false);
   useLayoutEffect(() => {
     const handleScroll = () => {
@@ -29,7 +33,7 @@ const MainLayout = ({ children }: MainLayoutProps): JSX.Element => {
     <>
       <Grid width={"100%"} container direction="column">
         <Grid>
-          <HeaderWrapper scrolled={scrolled}>
+          <HeaderWrapper scrolled={scrolled && scrollDirection === 'up'}>
             <Header />
           </HeaderWrapper>
         </Grid>

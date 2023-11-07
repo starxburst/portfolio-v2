@@ -73,7 +73,7 @@ const SnakeGame = ({
   });
 
   useEffect(() => {
-    lockBodyScroll();
+    // lockBodyScroll();
     if (isDesktop) setDisplayTrailingEffect(true);
     // setTail(getRandomEmojis(3));
     setEmoji({

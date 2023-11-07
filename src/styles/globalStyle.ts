@@ -13,10 +13,12 @@ export const globalStyles = globalCss({
     lineHeight: 1,
     height: '100%',
     minWidth: '100%',
-    minHeight: '100vh',
+    // minHeight: '100vh',
+    scrollBehavior: 'smooth',
   },
   body: {
     backgroundColor: '$background',
+    height: '100%',
     color: '$text',
     // overflow: 'hidden',
   },

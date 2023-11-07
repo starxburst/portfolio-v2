@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import SnakeGame from "../components/SnakeGame";
 import DecodeText from "../components/TextEffects/DecodeText";
 import GlitchEffectText2 from "../components/TextEffects/GlitchEffectText2";
+import InViewBox from "../components/ComponentEffects/InViewBox";
 
 const emojiGoal = 5;
 const Home = (): JSX.Element => {
@@ -37,8 +38,7 @@ const Home = (): JSX.Element => {
       >
         <Header />
         <Box direction="column" align="center">
-          {/* <MainContentBox> */}
-          <Box direction="column" justify="center" align="center" gap='xlarge'>
+          <Box direction="column" justify="center" align="center" gap="xlarge">
             <Box
               direction="row"
               css={{
@@ -56,21 +56,22 @@ const Home = (): JSX.Element => {
               <DecodeText text="Eric" />
               <DecodeText text="Lam" />
             </Box>
-            <GlitchEffectText2
-              css={{
-                fontSize: "3rem",
-                whiteSpace: "wrap",
-                "@sm": {
-                  fontSize: "0.5rem",
-                },
-              }}
-            >
-              Full Stack Developer
-            </GlitchEffectText2>
+            <InViewBox css={{ width: "100%" }}>
+              <GlitchEffectText2
+                css={{
+                  fontSize: "3rem",
+                  whiteSpace: "wrap",
+                  "@sm": {
+                    fontSize: "0.5rem",
+                  },
+                }}
+              >
+                Full Stack Developer
+              </GlitchEffectText2>
+            </InViewBox>
           </Box>
-          {/* </MainContentBox> */}
         </Box>
-            <div>d</div>
+        <div>d</div>
       </Box>
     </>
   );

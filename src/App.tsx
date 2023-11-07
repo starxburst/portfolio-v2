@@ -8,6 +8,7 @@ import MainLayout from './layouts/MainLayout';
 import Home from './page/Home';
 import { globalStyles } from './styles/globalStyle';
 import { useDarkMode } from './hooks/useDarkMode';
+import Spacer from './components/Spacer';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
     <>
       <MainLayout>
         <Home />
+        <Spacer height={10}/>
         <WorkingExperience/>
       </MainLayout>
     </>
