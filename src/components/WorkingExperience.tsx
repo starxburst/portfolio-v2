@@ -1,5 +1,6 @@
 import InViewBox from "./ComponentEffects/InViewBox";
 import Box from "./Containers/Box";
+import DecodeDigitCodeText from "./TextEffects/DecodeDigitCodeText";
 import HollowText from "./TextEffects/HollowText";
 
 const WorkingExperience = (): JSX.Element => {
@@ -10,9 +11,17 @@ const WorkingExperience = (): JSX.Element => {
       css={{ width: "100%" }}
       gap="none"
     >
-      <Box padding='medium' direction="column" align="flex-start" css={{ width: "80%", "@sm": {
-        width: "100%",
-      } }}>
+      <Box
+        padding="medium"
+        direction="column"
+        align="flex-start"
+        css={{
+          width: "80%",
+          "@sm": {
+            width: "100%",
+          },
+        }}
+      >
         <InViewBox>
           <HollowText css={{ fontSize: "4rem" }}>Working Experience</HollowText>
         </InViewBox>
@@ -32,6 +41,12 @@ const WorkingExperience = (): JSX.Element => {
           <h1>Working Experience</h1>
           <h1>Working Experience</h1>
         </InViewBox>
+        <div>Working Experience</div>
+        <div>Working Experience</div>
+        <div>Working Experience</div>
+        <div>Working Experience</div>
+        <div>Working Experience</div>
+        <div>Working Experience</div>
       </Box>
     </Box>
   );
