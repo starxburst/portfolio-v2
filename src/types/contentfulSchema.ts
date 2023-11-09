@@ -15,7 +15,9 @@ export type WorkingExperienceSchema = {
 export type ArticleSchema = {
   title: string;
   url: string;
-  favicon: string;
-  descrpition: string;
+  favicons: Favicon;
+  description: string;
   image: string;
 }
+
+export type Favicon = 'youtube' | 'instagram' | 'linkedIn'

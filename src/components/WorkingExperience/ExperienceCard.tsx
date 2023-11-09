@@ -1,13 +1,14 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { format } from "date-fns";
 import { InView } from "react-intersection-observer";
+import Slider, { Settings } from "react-slick";
 import useResponsive from "../../hooks/useResponsive";
-import { styled } from "../../styles";
+import { css, styled } from "../../styles";
 import { ArticleSchema, WorkingExperienceSchema } from "../../types/contentfulSchema";
 import InViewBox from "../ComponentEffects/InViewBox";
-import DecodeDigitCodeText from "../TextEffects/DecodeDigitCodeText";
 import Box from "../Containers/Box";
 import Spacer from "../Spacer";
+import DecodeDigitCodeText from "../TextEffects/DecodeDigitCodeText";
 import LinkPreviewCard from "./LinkPreviewCard";
 
 type ExperienceCardProps = {
@@ -18,6 +19,24 @@ const ExperienceCard = ({ experience }: ExperienceCardProps): JSX.Element => {
   const { isMobile } = useResponsive();
   const { company, description, position, skills, startDate, endDate, articles } =
     experience;
+
+    const dotsClass = css({
+      color: 'red !important',
+    }).toString();
+
+    const sliderSettings: Settings = {
+      dots: true,
+      // infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      speed: 500,
+      slidesToShow: isMobile ? 1 : 2,
+      slidesToScroll: 1,
+      nextArrow: (<></>),
+      prevArrow: (<></>),
+      dotsClass: `slick-dots ${dotsClass}`,
+      arrows: false,
+    };
 
     console.log('articles', articles);
   // console.log('experience', experience);
@@ -36,7 +55,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps): JSX.Element => {
               fontSize: "1rem",
             },
           }}
-          threshold={isMobile ? 0.2 : 0.5}
+          threshold={isMobile ? 0.1 : 0.3}
         >
           <DecodeDigitCodeText
             // ref={ref}
@@ -64,12 +83,16 @@ const ExperienceCard = ({ experience }: ExperienceCardProps): JSX.Element => {
               </>
             )}
           </Box>
-          <Box>
-            {articles &&
-              articles.length >= 1 &&
-              articles.map((article, index) => {
-                return (<LinkPreviewCard key={index} article={article.fields as ArticleSchema} />);
-              })}
+          <Spacer height={isMobile ? 1 : 5} />
+          <Box >
+            <StyledSlider {...sliderSettings}>
+              {articles &&
+                articles.length >= 1 &&
+                articles.map((article, index) => {
+                  return (<LinkPreviewCard key={index} article={article.fields as ArticleSchema} />);
+                  // return (<div key={index} >dasdasd</div>);
+                })}
+            </StyledSlider>
           </Box>
           {documentToReactComponents(description)}
           <StyledDiv
@@ -81,6 +104,26 @@ const ExperienceCard = ({ experience }: ExperienceCardProps): JSX.Element => {
     </InView>
   );
 };
+
+const StyledSlider = styled(Slider, {
+  maxWidth: '90vw',
+  // overflow: 'hidden',
+  // display: 'block'
+  '.slick-slide > div': {
+    display: 'grid',
+    placeItems: 'center',
+    padding: '3px',
+    // width: '80%',
+    // marginTop: '50px',
+    // margin: 'auto',
+    // height: '500px',
+    // padding: '0px',
+    // background: 'red',
+  },
+  '.slick-dots li button:before': {
+    color: '$text',
+  },
+});
 
 const StyledDiv = styled("div", {
 });

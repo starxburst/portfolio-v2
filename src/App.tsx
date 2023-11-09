@@ -9,6 +9,8 @@ import Home from './page/Home';
 import { globalStyles } from './styles/globalStyle';
 import { useDarkMode } from './hooks/useDarkMode';
 import Spacer from './components/Spacer';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
 
