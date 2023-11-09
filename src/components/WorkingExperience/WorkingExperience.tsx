@@ -1,12 +1,13 @@
 import { Entry, EntrySkeletonType } from "contentful";
 import { useEffect, useState } from "react";
 import { getWorkingExperience } from "../../api/contentData";
-import { WorkingExperienceSchema } from "../../types/workingExperienceSchema";
+import { WorkingExperienceSchema } from "../../types/contentfulSchema";
 import InViewBox from "../ComponentEffects/InViewBox";
 import Box from "../Containers/Box";
 import Spacer from "../Spacer";
 import HollowText from "../TextEffects/HollowText";
 import ExperienceCard from "./ExperienceCard";
+import LinkPreview from "../LinkPreview";
 
 const WorkingExperience = (): JSX.Element => {
   const [workingExperience, setWorkingExperience] = useState<Entry<EntrySkeletonType, undefined, string>[]>([]);
@@ -36,6 +37,7 @@ const WorkingExperience = (): JSX.Element => {
           },
         }}
       >
+        {/* <LinkPreview url={`https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7123696152117436416-BADk`}/> */}
         <InViewBox>
           <HollowText css={{ fontSize: "4rem" }}>Working Experience</HollowText>
         </InViewBox>

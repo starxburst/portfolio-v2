@@ -23,7 +23,7 @@ type DestringDigitstringTextProps = {
 };
 
 const DestringDigitstringText = forwardRef(({ string, play = false, css }: DestringDigitstringTextProps, ref) => {
-  console.log('string', string);
+  // console.log('string', string);
   const [text, setText] = useState(string);
   const textRef = useRef<HTMLDivElement | null>(null);
 
@@ -36,7 +36,7 @@ const DestringDigitstringText = forwardRef(({ string, play = false, css }: Destr
     const tl = gsap.timeline();
     let step = 0;
 
-    console.log('textRef.current', textRef.current);
+    // console.log('textRef.current', textRef.current);
 
     tl.fromTo(
       textRef.current,
