@@ -1,12 +1,13 @@
-import { styled } from '@stitches/react';
 import { gsap } from 'gsap';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, forwardRef } from 'react';
+import { styled } from '../../styles';
+import { CSS } from '@stitches/react';
 
 const StyledDiv = styled('div', {
   padding: '10px 15px',
-  margin: '15px',
-  background: '#000',
-  color: '#fff',
+  // margin: '15px',
+  background: '$backgroundLayer2',
+  color: '$text',
   textAlign: 'center',
   cursor: 'pointer',
   fontFamily: "'Share Tech Mono', monospace", // Use a monospace font
@@ -15,18 +16,27 @@ const StyledDiv = styled('div', {
   maxWidth: '100%',
 });
 
-const DecodeDigitCodeText = ({ children, play = false }) => {
-  const [text, setText] = useState(children);
-  const textRef = useRef();
+type DestringDigitstringTextProps = {
+  string: string;
+  play?: boolean;
+  css?: CSS
+};
+
+const DestringDigitstringText = forwardRef(({ string, play = false, css }: DestringDigitstringTextProps, ref) => {
+  console.log('string', string);
+  const [text, setText] = useState(string);
+  const textRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!play) return;
 
-    const arr1 = children.split('');
+    const arr1 = string.split('');
     const arr2 = arr1.map(() => randChar());
 
     const tl = gsap.timeline();
     let step = 0;
+
+    console.log('textRef.current', textRef.current);
 
     tl.fromTo(
       textRef.current,
@@ -53,10 +63,10 @@ const DecodeDigitCodeText = ({ children, play = false }) => {
         },
       }
     );
-  }, [children, play]);
+  }, [string, play]);
 
-  return <StyledDiv ref={textRef}>{text}</StyledDiv>;
-};
+  return <StyledDiv css={{...css}} ref={ref || textRef}>{text}</StyledDiv>;
+});
 
 function randChar() {
   let c = 'abcdefghijklmnopqrstuvwxyz1234567890!@#$^&*()…æ_+-=;[]/~`';
@@ -64,4 +74,4 @@ function randChar() {
   return Math.random() > 0.5 ? c : c.toUpperCase();
 }
 
-export default DecodeDigitCodeText;
+export default DestringDigitstringText;

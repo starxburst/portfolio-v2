@@ -3,7 +3,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 // import './App.css';
-import WorkingExperience from './components/WorkingExperience';
+import WorkingExperience from './components/WorkingExperience/WorkingExperience';
 import MainLayout from './layouts/MainLayout';
 import Home from './page/Home';
 import { globalStyles } from './styles/globalStyle';

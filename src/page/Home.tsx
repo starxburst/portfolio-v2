@@ -6,7 +6,7 @@ import DecodeText from "../components/TextEffects/DecodeText";
 import GlitchEffectText2 from "../components/TextEffects/GlitchEffectText2";
 import InViewBox from "../components/ComponentEffects/InViewBox";
 
-const emojiGoal = 5;
+const emojiGoal = 1;
 const Home = (): JSX.Element => {
   const [collectedEmojis, setCollectedEmojis] = useState(0);
   const [displayCollectEmojis, setDisplayCollectEmojis] = useState(false);

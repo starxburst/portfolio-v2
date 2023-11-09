@@ -1,9 +1,8 @@
 import Grid from '@mui/material/Unstable_Grid2';
 import { ReactNode, useLayoutEffect, useState } from 'react';
 import Header from "../components/Header";
-import { styled } from '../styles';
-import { client } from '../services/contentful';
 import useScrollDirection from '../hooks/useDetectDirection';
+import { styled } from '../styles';
 
 
 type MainLayoutProps = {
@@ -11,7 +10,6 @@ type MainLayoutProps = {
 }
 
 const MainLayout = ({ children }: MainLayoutProps): JSX.Element => {
-  const x = client
   const scrollDirection = useScrollDirection();
   const [scrolled, setScrolled] = useState(false);
   useLayoutEffect(() => {
