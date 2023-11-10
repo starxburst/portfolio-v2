@@ -9,6 +9,10 @@ import { ImageAspect } from "../ImageAspect";
 import youtube from "../../assets/favicon/youtube.png";
 import linked_in from "../../assets/favicon/linked_in.png";
 import instagram from "../../assets/favicon/instagram.png";
+import foodpanda from "../../assets/favicon/foodPanda.jpeg";
+import epd from "../../assets/favicon/epd.png";
+import hk01 from "../../assets/favicon/hk01.png";
+import clp from "../../assets/favicon/clp.png";
 
 type LinkPreviewCardProps = {
   article: ArticleSchema;
@@ -28,6 +32,14 @@ const LinkPreviewCard = ({ article }: LinkPreviewCardProps) => {
         return linked_in;
       case 'instagram':
         return instagram;
+      case 'foodPanda':
+        return foodpanda;
+      case 'epd':
+        return epd;
+      case 'hk01':
+        return hk01;
+      case 'clp':
+        return clp
       default:
         return favicons;
     }
@@ -57,7 +69,7 @@ const LinkPreviewCard = ({ article }: LinkPreviewCardProps) => {
       }}
     >
       <Box css={{ position: "relative" }}>
-        <ImageAspect src={image} google alt="image" width="100%" />
+        <ImageAspect src={image} google alt="image" width="1800%" />
         <Box direction="column" align="flex-start" css={{ position: "absolute", bottom: 0 }}>
           <Box
             padding="medium"
@@ -76,7 +88,7 @@ const LinkPreviewCard = ({ article }: LinkPreviewCardProps) => {
           </Box>
         </Box>
       </Box>
-      <Box padding={isMobile ? "medium" : "large"}>{description}</Box>
+      <Box padding={isMobile ? "medium" : "large"} css={{fontSize: '1.5rem', '@sm': {fontSize: '1rem'}}}>{description}</Box>
     </Box>
   );
 };

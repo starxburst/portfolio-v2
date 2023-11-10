@@ -26,7 +26,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps): JSX.Element => {
 
     const sliderSettings: Settings = {
       dots: true,
-      // infinite: true,
+      pauseOnHover: false,
       autoplay: true,
       autoplaySpeed: 3000,
       speed: 500,

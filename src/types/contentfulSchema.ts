@@ -9,7 +9,6 @@ export type WorkingExperienceSchema = {
   endDate?: string;
   description: Document;
   articles?: Entry<EntrySkeletonType, undefined, string>[];
-
 };
 
 export type ArticleSchema = {
@@ -18,6 +17,13 @@ export type ArticleSchema = {
   favicons: Favicon;
   description: string;
   image: string;
-}
+};
 
-export type Favicon = 'youtube' | 'instagram' | 'linkedIn'
+export type Favicon =
+  | "youtube"
+  | "instagram"
+  | "linkedIn"
+  | "foodPanda"
+  | "epd"
+  | "hk01"
+  | "clp"
