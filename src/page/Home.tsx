@@ -9,6 +9,7 @@ import InViewBox from "../components/ComponentEffects/InViewBox";
 const emojiGoal = 1;
 const Home = (): JSX.Element => {
   const [collectedEmojis, setCollectedEmojis] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [displayCollectEmojis, setDisplayCollectEmojis] = useState(false);
 
   useEffect(() => {

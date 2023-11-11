@@ -11,6 +11,7 @@ import { useDarkMode } from './hooks/useDarkMode';
 import Spacer from './components/Spacer';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Introduction from './components/Introduction';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     <>
       <MainLayout>
         <Home />
+        <Introduction/>
         <Spacer height={10}/>
         <WorkingExperience/>
       </MainLayout>

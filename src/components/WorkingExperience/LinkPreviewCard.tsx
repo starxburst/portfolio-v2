@@ -24,7 +24,7 @@ const LinkPreviewCard = ({ article }: LinkPreviewCardProps) => {
   // console.log("article", article);
   const { title, description, favicons, image, url } = article;
   const getFavicon = (faviconName: Favicon) => {
-    console.log("favicons", favicons);
+    // console.log("favicons", favicons);
     switch (faviconName) {
       case 'youtube':
         return youtube;

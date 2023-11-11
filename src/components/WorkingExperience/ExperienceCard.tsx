@@ -20,10 +20,6 @@ const ExperienceCard = ({ experience }: ExperienceCardProps): JSX.Element => {
   const { company, description, position, skills, startDate, endDate, articles } =
     experience;
 
-    const dotsClass = css({
-      color: 'red !important',
-    }).toString();
-
     const sliderSettings: Settings = {
       dots: true,
       pauseOnHover: false,
@@ -34,11 +30,10 @@ const ExperienceCard = ({ experience }: ExperienceCardProps): JSX.Element => {
       slidesToScroll: 1,
       nextArrow: (<></>),
       prevArrow: (<></>),
-      dotsClass: `slick-dots ${dotsClass}`,
       arrows: false,
     };
 
-    console.log('articles', articles);
+    // console.log('articles', articles);
   // console.log('experience', experience);
   return (
     <InView triggerOnce threshold={isMobile ? 0.2 : 0.5}>

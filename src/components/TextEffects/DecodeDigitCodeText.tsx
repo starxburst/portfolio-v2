@@ -22,7 +22,7 @@ type DestringDigitstringTextProps = {
   css?: CSS
 };
 
-const DestringDigitstringText = forwardRef(({ string, play = false, css }: DestringDigitstringTextProps, ref) => {
+const DecodeDigitCodeText = forwardRef(({ string, play = false, css }: DestringDigitstringTextProps, ref) => {
   // console.log('string', string);
   const [text, setText] = useState(string);
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -74,4 +74,4 @@ function randChar() {
   return Math.random() > 0.5 ? c : c.toUpperCase();
 }
 
-export default DestringDigitstringText;
+export default DecodeDigitCodeText;

@@ -7,13 +7,12 @@ import Box from "../Containers/Box";
 import Spacer from "../Spacer";
 import HollowText from "../TextEffects/HollowText";
 import ExperienceCard from "./ExperienceCard";
-import LinkPreview from "../LinkPreview";
 
 const WorkingExperience = (): JSX.Element => {
   const [workingExperience, setWorkingExperience] = useState<Entry<EntrySkeletonType, undefined, string>[]>([]);
   const fetchData = async () => {
     const data = await getWorkingExperience();
-    console.log('data', data);
+    // console.log('data', data);
     setWorkingExperience(data);
   }
   useEffect(() => {

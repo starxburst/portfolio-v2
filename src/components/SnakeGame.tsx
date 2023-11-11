@@ -9,6 +9,7 @@ import useResponsive from '../hooks/useResponsive';
 import { keyframes, styled } from "../styles";
 import { MouseTrailingEffect } from "./ComponentEffects/MouseTrailingEffect";
 import { scrollToComponent } from '../utils/scroll-helpers';
+import rainbowCat from '../assets/rainbow_cat.gif';
 
 type SnakeGameProps = {
   emojiGoal: number;
@@ -252,12 +253,12 @@ const SnakeGame = ({
       {displayTrailingEffect && <MouseTrailingEffect string={tail} />}
       {displayOrbitingDivs && (
         <OrbitingDivs>
-          <OrbitImage src="https://cdn3.emoji.gg/emojis/4545_RainbowBlobCat.gif" />
-          <OrbitImage src="https://cdn3.emoji.gg/emojis/4545_RainbowBlobCat.gif" />
-          <OrbitImage src="https://cdn3.emoji.gg/emojis/4545_RainbowBlobCat.gif" />
-          <OrbitImage src="https://cdn3.emoji.gg/emojis/4545_RainbowBlobCat.gif" />
-          <OrbitImage src="https://cdn3.emoji.gg/emojis/4545_RainbowBlobCat.gif" />
-          <OrbitImage src="https://cdn3.emoji.gg/emojis/4545_RainbowBlobCat.gif" />
+          <OrbitImage src={rainbowCat} />
+          <OrbitImage src={rainbowCat} />
+          <OrbitImage src={rainbowCat} />
+          <OrbitImage src={rainbowCat} />
+          <OrbitImage src={rainbowCat} />
+          <OrbitImage src={rainbowCat} />
         </OrbitingDivs>
       )}
     </>
