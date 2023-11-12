@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { styled } from '../../styles';
 
 type TextAnimationProps = {
@@ -84,7 +84,8 @@ type DecodeTextProps = {
 };
 
 const DecodeText = ({ text }: DecodeTextProps) => {
-  const [key, setKey] = useState(Math.random());
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [key, _] = useState(Math.random());
 
   useEffect(() => {
     // const timer = setInterval(() => {

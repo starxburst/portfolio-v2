@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import ReactCanvasConfetti from "react-canvas-confetti";
 
-function randomInRange(min, max) {
+function randomInRange(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
@@ -14,7 +14,7 @@ const canvasStyles = {
   left: 0
 };
 
-function getAnimationSettings(originXA, originXB) {
+function getAnimationSettings(originXA: number, originXB: number) {
   return {
     startVelocity: 30,
     spread: 360,
@@ -33,10 +33,12 @@ type FireworksProps = {
 };
 
 const Fireworks = ({status}: FireworksProps) => {
-  const refAnimationInstance = useRef(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const refAnimationInstance = useRef<any>(null);
   const [intervalId, setIntervalId] = useState();
 
-  const getInstance = useCallback((instance) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getInstance = useCallback((instance: any) => {
     refAnimationInstance.current = instance;
   }, []);
 
@@ -50,18 +52,21 @@ const Fireworks = ({status}: FireworksProps) => {
   const startAnimation = useCallback(() => {
     console.log("startAnimation");
     if (!intervalId) {
-      setIntervalId(setInterval(nextTickAnimation, 400));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setIntervalId(setInterval(nextTickAnimation, 400) as any);
     }
   }, [intervalId, nextTickAnimation]);
 
   const pauseAnimation = useCallback(() => {
     clearInterval(intervalId);
-    setIntervalId(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    setIntervalId(null as any);
   }, [intervalId]);
 
   const stopAnimation = useCallback(() => {
     clearInterval(intervalId);
-    setIntervalId(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    setIntervalId(null as any);
     refAnimationInstance.current && refAnimationInstance.current.reset();
   }, [intervalId]);
 
@@ -80,7 +85,7 @@ const Fireworks = ({status}: FireworksProps) => {
 
   return (
     <>
-      <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles} />
+      <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles as never} />
     </>
   );
 };

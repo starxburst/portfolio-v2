@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { InView } from "react-intersection-observer";
 import Slider, { Settings } from "react-slick";
 import useResponsive from "../../hooks/useResponsive";
-import { css, styled } from "../../styles";
+import { styled } from "../../styles";
 import { ArticleSchema, WorkingExperienceSchema } from "../../types/contentfulSchema";
 import InViewBox from "../ComponentEffects/InViewBox";
 import Box from "../Containers/Box";
@@ -37,7 +37,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps): JSX.Element => {
   // console.log('experience', experience);
   return (
     <InView triggerOnce threshold={isMobile ? 0.2 : 0.5}>
-      {({ inView, ref, entry }) => (
+      {({ inView, ref }) => (
         <InViewBox
           css={{
             fontSize: "2rem",

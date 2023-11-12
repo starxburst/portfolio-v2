@@ -6,7 +6,7 @@ function useMouseDrag() {
   const lastMousePosition = useRef({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
 
-  function registerMousePosition({ clientX, clientY }) {
+  function registerMousePosition({ clientX, clientY }: MouseEvent) {
     lastMousePosition.current.x = clientX;
     lastMousePosition.current.y = clientY;
   }
@@ -35,8 +35,9 @@ function useMouseDrag() {
 }
 
 // Reusable component for mouse trailing effect
-export function MouseTrailingEffect({ string }) {
-  const trailRefs = useRef([]);
+export function MouseTrailingEffect({ string }: { string: string }) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const trailRefs = useRef<any[]>([]);
   const rAFIndex = useRef(0);
   const { isDragging, lastMousePosition } = useMouseDrag();
 
@@ -52,6 +53,7 @@ export function MouseTrailingEffect({ string }) {
 
   useEffect(() => {
     function update() {
+      // eslint-disable-next-line no-constant-condition
       if (true) {
         rAFIndex.current = requestAnimationFrame(update);
       }

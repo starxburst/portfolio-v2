@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, ReactNode } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 type SlideInProps = {
   children: ReactNode;

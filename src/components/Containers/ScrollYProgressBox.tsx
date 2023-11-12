@@ -9,9 +9,8 @@ type ScrollYProgressBoxProps = {
   css?: CSS;
 };
 
-const ScrollYProgressBox = ({ children, css, container }: ScrollYProgressBoxProps) => {
+const ScrollYProgressBox = ({ css, container }: ScrollYProgressBoxProps) => {
   const boxRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     container: container,
     target: boxRef, // Pass the actual DOM element
@@ -46,7 +45,8 @@ const ScrollYProgressBox = ({ children, css, container }: ScrollYProgressBoxProp
           opacity: scrollYProgress,
           position: 'fixed', top: '50%', left: '50%',
           ...css,
-        }}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any}
       >
         {hookedYPostion}
       </motion.div>

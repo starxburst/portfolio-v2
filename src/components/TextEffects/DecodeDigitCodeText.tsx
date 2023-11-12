@@ -55,7 +55,8 @@ const DecodeDigitCodeText = forwardRef(({ string, play = false, css }: DestringD
           const p = Math.floor(tl.progress() * arr1.length);
           if (step !== p) {
             step = p;
-            arr1.forEach((char, i) => (arr2[i] = randChar()));
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            arr1.forEach((i) => (arr2[i as any] = randChar()));
             const pt1 = arr1.join('').substring(p, 0);
             const pt2 = arr2.join('').substring(arr2.length - p, 0);
             setText(pt1 + pt2);
@@ -65,7 +66,8 @@ const DecodeDigitCodeText = forwardRef(({ string, play = false, css }: DestringD
     );
   }, [string, play]);
 
-  return <StyledDiv css={{...css}} ref={ref || textRef}>{text}</StyledDiv>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return <StyledDiv css={{...css}} ref={ref || textRef as any}>{text}</StyledDiv>;
 });
 
 function randChar() {

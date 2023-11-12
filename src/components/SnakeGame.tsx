@@ -74,7 +74,7 @@ const SnakeGame = ({
   });
 
   useEffect(() => {
-    // lockBodyScroll();
+    lockBodyScroll();
     if (isDesktop) setDisplayTrailingEffect(true);
     // setTail(getRandomEmojis(3));
     setEmoji({
@@ -113,7 +113,7 @@ const SnakeGame = ({
       setDisplayTrailingEffect(true);
       setDisplayOrbitingDivs(true);
       const scrollToViewTimer = setTimeout(() => {
-        scrollToComponent('working-experience');
+        scrollToComponent('introduction');
       }, 3000); // Stop the confetti after 10 seconds
       const orbitingDivsTimer = setTimeout(() => {
         setDisplayOrbitingDivs(false);

@@ -10,7 +10,7 @@ const emojiGoal = 1;
 const Home = (): JSX.Element => {
   const [collectedEmojis, setCollectedEmojis] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [displayCollectEmojis, setDisplayCollectEmojis] = useState(false);
+  const [_, setDisplayCollectEmojis] = useState(false);
 
   useEffect(() => {
     const displayCollectEmojisTimer = setTimeout(() => {

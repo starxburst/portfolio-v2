@@ -1,4 +1,4 @@
-import { getLinkPreview, getPreviewFromContent } from "link-preview-js";
+import { getLinkPreview } from "link-preview-js";
 
 type LinkPreviewProps = {
   url: string;

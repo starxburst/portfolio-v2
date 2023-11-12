@@ -1,24 +1,12 @@
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useScroll,
-} from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useScroll } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
+import DisplayBox from "./DisplayBox";
+import ParallaxBox from "./ParallaxBox";
 import Box from "../Containers/Box";
+import { CSS } from "@stitches/react";
+import differenceInDays from "date-fns/differenceInDays";
 
 const Hello = (): JSX.Element => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  // useEffect(() => {
-  //   const unsubscribeY = y.on("change", (y) => console.log("y", y));
-
-  //   return () => {
-  //     unsubscribeY();
-  //   };
-  // }, []);
-
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -28,19 +16,57 @@ const Hello = (): JSX.Element => {
   const [hookedYPosition, setHookedYPosition] = useState(0);
 
   useEffect(() => {
-    scrollYProgress.on("change", (v) => {
+    const unsubscribe = scrollYProgress.on("change", (v) => {
       setHookedYPosition(v);
       // console.log("v", v * 100);
     });
+
+    return () => {
+      unsubscribe();
+    };
   });
 
-  const displayFirstBoxStart = 0.25
-  const displayFirstBoxEnd = 0.5
-  const displayFirstBoxHeight = displayFirstBoxEnd - displayFirstBoxStart
-  let displayBoxScrollPosition = (hookedYPosition - displayFirstBoxStart) / displayFirstBoxHeight;
-  displayBoxScrollPosition = Math.max(0, Math.min(1, displayBoxScrollPosition));
+  const {
+    displayFirstBox,
+    displayParallaxBox,
+    displayFirstBoxScrollPosition,
+    displaySecondBox,
+    displaySecondBoxScrollPosition,
+  } = useMemo(() => {
+    // FirstBoxParams
+    const displayFirstBoxStart = 0.25;
+    const displayFirstBoxEnd = 0.5;
+    const displayFirstBoxHeight = displayFirstBoxEnd - displayFirstBoxStart;
+    let displayFirstBoxScrollPosition =
+      (hookedYPosition - displayFirstBoxStart) / displayFirstBoxHeight;
+    displayFirstBoxScrollPosition = Math.max(
+      0,
+      Math.min(1, displayFirstBoxScrollPosition)
+    );
+    const displayFirstBox = hookedYPosition > 0.25 && hookedYPosition < 0.5;
 
-  const displayFirstBox = hookedYPosition > 0.25 && hookedYPosition < 0.5;
+    // SecondBoxParams
+    const displaySecondBoxStart = 0.5;
+    const displaySecondBoxEnd = 0.75;
+    const displaySecondBoxHeight = displaySecondBoxEnd - displaySecondBoxStart;
+    let displaySecondBoxScrollPosition =
+      (hookedYPosition - displaySecondBoxStart) / displaySecondBoxHeight;
+    displaySecondBoxScrollPosition = Math.max(
+      0,
+      Math.min(1, displaySecondBoxScrollPosition)
+    );
+    const displaySecondBox = hookedYPosition > 0.5 && hookedYPosition < 0.75;
+
+    // ParallaxBoxParams
+    const displayParallaxBox = hookedYPosition > 0 && hookedYPosition < 0.75;
+    return {
+      displayFirstBox,
+      displayParallaxBox,
+      displayFirstBoxScrollPosition,
+      displaySecondBox,
+      displaySecondBoxScrollPosition,
+    };
+  }, [hookedYPosition]);
 
   return (
     <section>
@@ -53,8 +79,55 @@ const Hello = (): JSX.Element => {
           // backgroundColor: "red",
         }}
       >
-        <div style={{ height: "100vh" }}></div>
-        <DisplayBox display={displayFirstBox} percentage={displayBoxScrollPosition} />
+        <ParallaxBox
+          display={displayParallaxBox}
+          scrollYProgress={scrollYProgress}
+        />
+        <div style={{ height: "100vh" }} />
+        <div id="introduction">
+          <DisplayBox
+            display={displayFirstBox}
+            percentage={displayFirstBoxScrollPosition}
+          >
+            <DisplayBoxContent>Hi 👋,&nbsp;</DisplayBoxContent>
+            <DisplayBoxContent>I am &nbsp;</DisplayBoxContent>
+            <DisplayBoxContent
+              css={{
+                color: "$text",
+                textDecoration: "underline",
+              }}
+            >
+              Eric Lam&nbsp;
+            </DisplayBoxContent>
+            <DisplayBoxContent>Welcome to my website!&nbsp;</DisplayBoxContent>
+            <DisplayBoxContent>Hope you like my&nbsp;</DisplayBoxContent>
+            <DisplayBoxContent>little suprise!</DisplayBoxContent>
+          </DisplayBox>
+        </div>
+        <div>
+          <DisplayBox
+            display={displaySecondBox}
+            percentage={displaySecondBoxScrollPosition}
+          >
+            <DisplayBoxContent>
+              A self-taught developer,&nbsp;
+            </DisplayBoxContent>
+            <DisplayBoxContent>
+              Long but enjoyable journey.&nbsp;
+            </DisplayBoxContent>
+            <DisplayBoxContent>With&nbsp;</DisplayBoxContent>
+            <DisplayBoxContent
+              css={{
+                color: "$text",
+                textDecoration: "underline",
+              }}
+            >
+              {`${differenceInDays(new Date(), new Date("2022-08-16"))} days`}
+              &nbsp;
+            </DisplayBoxContent>
+            <DisplayBoxContent>in this field!</DisplayBoxContent>
+          </DisplayBox>
+        </div>
       </div>
     </section>
   );
@@ -63,48 +136,25 @@ const Hello = (): JSX.Element => {
 export default Hello;
 
 type DisplayBoxProps = {
-  display: boolean;
-  percentage?: number;
+  children: React.ReactNode;
+  css?: CSS;
 };
 
-const DisplayBox = ({ display, percentage }: DisplayBoxProps): JSX.Element => {
-  const text = "Hi, =I am Eric Lam, =Welcome to my website!";
-  const parts = text.split("=");
-
-  console.log("percentage", percentage);
-
+const DisplayBoxContent = ({ children, css }: DisplayBoxProps) => {
   return (
-    <AnimatePresence>
-      {display && (
-        <Box
-          style={{
-            width: "50%",
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            fontSize: "5rem",
-            // backgroundColor: "red",
-          }}
-        >
-          <div style={{ overflow: "hidden" }}>
-            {parts.map((part, i) => (
-              <motion.span
-                key={i}
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                transition={{
-                  delay: i * 0.5, // Change this to customize the delay
-                  duration: 0.5,
-                  ease: "easeOut",
-                }}
-              >
-                {part}{" "}
-              </motion.span>
-            ))}
-          </div>
-        </Box>
-      )}
-    </AnimatePresence>
+    <Box
+      css={{
+        display: "inline",
+        background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+        color: "transparent",
+        WebkitBackgroundClip: "text",
+        MozBackgroundClip: "text",
+        backgroundClip: "text",
+        fontWeight: "bold",
+        ...css,
+      }}
+    >
+      {children}
+    </Box>
   );
 };
