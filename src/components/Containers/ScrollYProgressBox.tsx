@@ -15,12 +15,12 @@ const ScrollYProgressBox = ({ css, container }: ScrollYProgressBoxProps) => {
     container: container,
     target: boxRef, // Pass the actual DOM element
   });
-  console.log("scrollYProgress", scrollYProgress);
+  // console.log("scrollYProgress", scrollYProgress);
   const [hookedYPostion, setHookedYPosition] = useState(0);
   useEffect(() => {
     // hook into the onChange, store the current value as state.
     scrollYProgress.onChange((v) => setHookedYPosition(v));
-    console.log("hookedYPostion", hookedYPostion);
+    // console.log("hookedYPostion", hookedYPostion);
   }, [scrollYProgress]); //make sure to re-subscribe when scrollYProgress changes
   return (
     <Box ref={boxRef}>

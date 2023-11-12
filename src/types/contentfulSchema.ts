@@ -27,3 +27,13 @@ export type Favicon =
   | "epd"
   | "hk01"
   | "clp"
+
+export type ProjectSchema = {
+  title: string;
+  description?: string;
+  skills: string[];
+  date: string;
+  image: string;
+  demo?: string;
+  code?: string;
+}

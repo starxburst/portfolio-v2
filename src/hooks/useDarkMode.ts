@@ -8,11 +8,11 @@ const themeRoot = document.body
 
 export const useDarkMode = () => {
   const isDarkMode = useRecoilValue(darkModeState)
-  console.log('isDarkMode', isDarkMode)
+  // console.log('isDarkMode', isDarkMode)
 
   useEffect(() => {
     if (isDarkMode) {
-      console.log('dark mode')
+      // console.log('dark mode')
       themeRoot.classList.add(darkTheme)
     } else {
       themeRoot.classList.remove(darkTheme)

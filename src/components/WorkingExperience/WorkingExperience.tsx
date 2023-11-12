@@ -36,7 +36,6 @@ const WorkingExperience = (): JSX.Element => {
           },
         }}
       >
-        {/* <LinkPreview url={`https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7123696152117436416-BADk`}/> */}
         <InViewBox>
           <HollowText css={{ fontSize: "4rem" }}>Working Experience</HollowText>
         </InViewBox>
@@ -49,24 +48,6 @@ const WorkingExperience = (): JSX.Element => {
           <ExperienceCard key={index} experience={item.fields as WorkingExperienceSchema} />
         ))
         }
-        <InViewBox x={0} y={100}>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-          <h1>Working Experience</h1>
-        </InViewBox>
-        <div>Working Experience</div>
-        <div>Working Experience</div>
-        <div>Working Experience</div>
-        <div>Working Experience</div>
-        <div>Working Experience</div>
-        <div>Working Experience</div>
       </Box>
     </Box>
   );

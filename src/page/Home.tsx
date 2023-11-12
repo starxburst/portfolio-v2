@@ -9,10 +9,18 @@ import InViewBox from "../components/ComponentEffects/InViewBox";
 const emojiGoal = 1;
 const Home = (): JSX.Element => {
   const [collectedEmojis, setCollectedEmojis] = useState(0);
+  const [playedSnakeGame, setPlayedSnakeGame] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setDisplayCollectEmojis] = useState(false);
+  const checkPlayedSnakeGame = () => {
+    const playedSnakeGame = localStorage.getItem("playedSnakeGame");
+    if (playedSnakeGame) {
+      setPlayedSnakeGame(true);
+    }
+  };
 
   useEffect(() => {
+    checkPlayedSnakeGame();
     const displayCollectEmojisTimer = setTimeout(() => {
       setDisplayCollectEmojis(true);
     }, 2500);
@@ -23,11 +31,13 @@ const Home = (): JSX.Element => {
 
   return (
     <>
-      <SnakeGame
-        emojiGoal={emojiGoal}
-        collectedEmojis={collectedEmojis}
-        setCollectedEmojis={setCollectedEmojis}
-      />
+      {!playedSnakeGame && (
+        <SnakeGame
+          emojiGoal={emojiGoal}
+          collectedEmojis={collectedEmojis}
+          setCollectedEmojis={setCollectedEmojis}
+        />
+      )}
       <Box
         direction="column"
         style={{ width: "100%" }}
@@ -72,7 +82,7 @@ const Home = (): JSX.Element => {
             </InViewBox>
           </Box>
         </Box>
-        <div>d</div>
+        <div>&nbsp;</div>
       </Box>
     </>
   );

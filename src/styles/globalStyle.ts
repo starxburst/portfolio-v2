@@ -15,12 +15,18 @@ export const globalStyles = globalCss({
     minWidth: '100%',
     // minHeight: '100vh',
     scrollBehavior: 'smooth',
+    /* Hide scrollbar for IE, Edge and Firefox */
+    scrollbarWidth: 'none', /* For Firefox */
+    msOverflowStyle: 'none', /* For Internet Explorer and Edge */
   },
   body: {
     backgroundColor: '$background',
     height: '100%',
     color: '$text',
     // overflow: 'hidden',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
   },
   div: {
     position: 'relative',

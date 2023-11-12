@@ -43,7 +43,7 @@ const SnakeGame = ({
     return pickedEmoji.join(" ");
   };
   const removePickedEmoji = (emoji: string[]) => {
-    console.log("remove emoji", emoji);
+    // console.log("remove emoji", emoji);
     setPossibleEmojis(
       possibleEmojis.filter((e) => {
         return !emoji.includes(e);
@@ -53,7 +53,7 @@ const SnakeGame = ({
 
   const lockBodyScroll = () => {
     const root = document.querySelector('#root')
-    if (!root) return
+    if (!root || localStorage.getItem("playedSnakeGame")) return
     disableBodyScroll(root)
   }
 
@@ -102,12 +102,12 @@ const SnakeGame = ({
   };
 
   useEffect(() => {
-    console.log(
-      "collected emojis",
-      collectedEmojis,
-      "/",
-      possibleEmojis.length
-    );
+    // console.log(
+    //   "collected emojis",
+    //   collectedEmojis,
+    //   "/",
+    //   possibleEmojis.length
+    // );
     if (collectedEmojis === emojiGoal) {
       addBounsEmoji();
       setDisplayTrailingEffect(true);
@@ -131,6 +131,7 @@ const SnakeGame = ({
       const displayTrailingEffectTimer = setTimeout(() => {
         setDisplayTrailingEffect(false);
       }, 15000); // Stop the confetti after 10 seconds
+      localStorage.setItem("playedSnakeGame", 'true');
       clearAllBodyScrollLocks();
       return () => {
         clearTimeout(displayConfettiTimer);
@@ -250,7 +251,7 @@ const SnakeGame = ({
       {startSpawnRandomEmoji && (
         <RandomEmoji onClick={spawnEmoji}>{emoji.char}</RandomEmoji>
       )}
-      {displayTrailingEffect && <MouseTrailingEffect string={tail} />}
+      {(displayTrailingEffect && isDesktop) && <MouseTrailingEffect string={tail} />}
       {displayOrbitingDivs && (
         <OrbitingDivs>
           <OrbitImage src={rainbowCat} />

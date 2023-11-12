@@ -50,7 +50,7 @@ const Fireworks = ({status}: FireworksProps) => {
   }, []);
 
   const startAnimation = useCallback(() => {
-    console.log("startAnimation");
+    // console.log("startAnimation");
     if (!intervalId) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setIntervalId(setInterval(nextTickAnimation, 400) as any);

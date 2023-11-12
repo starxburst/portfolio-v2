@@ -56,7 +56,7 @@ const DecodeDigitCodeText = forwardRef(({ string, play = false, css }: DestringD
           if (step !== p) {
             step = p;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            arr1.forEach((i) => (arr2[i as any] = randChar()));
+            arr1.forEach((_char, i) => (arr2[i as any] = randChar()));
             const pt1 = arr1.join('').substring(p, 0);
             const pt2 = arr2.join('').substring(arr2.length - p, 0);
             setText(pt1 + pt2);
